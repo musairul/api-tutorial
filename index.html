@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="#" class="gifImg" alt="" />
+    <script>
+      const img = document.querySelector(".gifImg");
+      fetch(
+        "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/london?key=LZMMC8ZPDQ3LCECRVW29EGSB2"
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      fetch(
+        "https://api.giphy.com/v1/gifs/translate?api_key=N1RPR7J6evFACulCbSeeV87rb4RAwfuJ&s=cats",
+        { mode: "cors" }
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          img.src = response.data.images.original.url;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>
